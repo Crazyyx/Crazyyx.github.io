@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
-    <title>1.048596%</title>
+    <title>Syna&#x27;s blog</title>
     <link href="https://crazyyx.github.io/feed.xml" rel="self" />
     <link href="https://crazyyx.github.io" />
-    <updated>2025-11-02T18:37:42+08:00</updated>
+    <updated>2025-11-02T19:06:37+08:00</updated>
     <author>
         <name>Syna</name>
     </author>
@@ -26,7 +26,9 @@
         <content type="html">
             <![CDATA[
                 <p>比赛题目网址
-<a href="https://codeforces.com/contest/2167">https://codeforces.com/contest/2167</a></p><hr>
+<a href="https://codeforces.com/contest/2167">https://codeforces.com/contest/2167</a></p><!--more-->
+
+<hr>
 <h3 id="a-square">A. Square?</h3>
 <p><strong>判断四个木棒是否能够组成正方形。</strong> 写的时候第一眼看成长方形了
 附赛时代码</p><pre><code>#include &lt;bits/stdc++.h&gt;
