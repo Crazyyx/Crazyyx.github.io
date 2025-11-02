@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Codeforces Round 1062 (Div. 4) - 1.048596%</title><meta name="description" content="比赛题目网址 https://codeforces.com/contest/2167 判断四个木棒是否能够组成正方形。 写的时候第一眼看成长方形了 附赛时代码 #include &lt;bits/stdc++.h&gt; using namespace std; int main() { ios::sync_with_stdio(false); int t; cin&gt;&gt;t; for (int T=1; T&lt;=t; T++) { int a[10]; cin&gt;&gt;a[1]&gt;&gt;a[2]&gt;&gt;a[3]&gt;&gt;a[4]; sort (a+1,a+5); if (a[1]==a[2] &amp;&amp; a[3]==a[4] &amp;&amp; a[2]==a[3]) { cout &lt;&lt;&quot;YES&quot;&lt;&lt;endl; } else { cout &lt;&lt;&quot;NO&quot;&lt;&lt;endl; } } return&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://crazyyx.github.io/codeforces-round-1062-div-4.html"><link rel="alternate" type="application/atom+xml" href="https://crazyyx.github.io/feed.xml" title="1.048596% - RSS"><link rel="alternate" type="application/json" href="https://crazyyx.github.io/feed.json" title="1.048596% - JSON"><meta property="og:title" content="Codeforces Round 1062 (Div. 4)"><meta property="og:site_name" content="1.048596%"><meta property="og:description" content="比赛题目网址 https://codeforces.com/contest/2167 判断四个木棒是否能够组成正方形。 写的时候第一眼看成长方形了 附赛时代码 #include &lt;bits/stdc++.h&gt; using namespace std; int main() { ios::sync_with_stdio(false); int t; cin&gt;&gt;t; for (int T=1; T&lt;=t; T++) { int a[10]; cin&gt;&gt;a[1]&gt;&gt;a[2]&gt;&gt;a[3]&gt;&gt;a[4]; sort (a+1,a+5); if (a[1]==a[2] &amp;&amp; a[3]==a[4] &amp;&amp; a[2]==a[3]) { cout &lt;&lt;&quot;YES&quot;&lt;&lt;endl; } else { cout &lt;&lt;&quot;NO&quot;&lt;&lt;endl; } } return&hellip;"><meta property="og:url" content="https://crazyyx.github.io/codeforces-round-1062-div-4.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://crazyyx.github.io/assets/css/style.css?v=71dab8c567f7b3ba72bc620f6dca2d58"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://crazyyx.github.io/codeforces-round-1062-div-4.html"},"headline":"Codeforces Round 1062 (Div. 4)","datePublished":"2025-11-02T18:37+08:00","dateModified":"2025-11-02T18:37+08:00","description":"比赛题目网址 https://codeforces.com/contest/2167 判断四个木棒是否能够组成正方形。 写的时候第一眼看成长方形了 附赛时代码 #include &lt;bits/stdc++.h&gt; using namespace std; int main() { ios::sync_with_stdio(false); int t; cin&gt;&gt;t; for (int T=1; T&lt;=t; T++) { int a[10]; cin&gt;&gt;a[1]&gt;&gt;a[2]&gt;&gt;a[3]&gt;&gt;a[4]; sort (a+1,a+5); if (a[1]==a[2] &amp;&amp; a[3]==a[4] &amp;&amp; a[2]==a[3]) { cout &lt;&lt;&quot;YES&quot;&lt;&lt;endl; } else { cout &lt;&lt;&quot;NO&quot;&lt;&lt;endl; } } return&hellip;","author":{"@type":"Person","name":"Syna","url":"https://crazyyx.github.io/authors/syna/"},"publisher":{"@type":"Organization","name":"Syna"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script>window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};</script><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });</script></head><body class="post-template"><header class="top js-header"><a class="logo" href="https://crazyyx.github.io/">1.048596%</a><div class="search"><div class="search__overlay js-search-overlay"><div class="wrapper search__overlay-inner"></div></div><button class="search__btn btn--icon js-search-btn" aria-label="Search"><svg height="18" width="18" role="presentation" focusable="false"><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#search"/></svg></button></div></header><main class="post"><article class="content"><div class="hero hero--noimage"><header class="hero__content"><div class="wrapper"><h1>Codeforces Round 1062 (Div. 4)</h1><div class="feed__meta content__meta"><a href="https://crazyyx.github.io/authors/syna/" class="feed__author">Syna</a> <time datetime="2025-11-02T18:37" class="feed__date">November 2, 2025</time></div></div></header></div><div class="entry-wrapper content__entry"><p>比赛题目网址 <a href="https://codeforces.com/contest/2167">https://codeforces.com/contest/2167</a></p><hr><h3 id="a-square">A. Square?</h3><p><strong>判断四个木棒是否能够组成正方形。</strong> 写的时候第一眼看成长方形了 附赛时代码</p><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    int t;
+    cin&gt;&gt;t;
+    for (int T=1; T&lt;=t; T++)
+    {
+        int a[10];
+        cin&gt;&gt;a[1]&gt;&gt;a[2]&gt;&gt;a[3]&gt;&gt;a[4];
+        sort (a+1,a+5);
+        if (a[1]==a[2] &amp;&amp; a[3]==a[4] &amp;&amp; a[2]==a[3])
+        {
+            cout &lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        }
+        else
+        {
+            cout &lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre><hr><h3 id="b-your-name">B. Your Name</h3><p><strong>给定两个等长字符串，判断一个字符串是否能够通过改变字符顺序得到另一个。</strong></p><p>比赛时有两个思路，因为题目已经限定字符串只含小写字母，所以可以去存每个字母的出现次数后一一比较；第二个想到后更好实现，就是用<code>sort</code>函数去先给两个字符串进行排序，这种情况下函数会自动按字典序排序字符串。之后只需比较排序后的字符串即可</p><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    int t;
+    cin&gt;&gt;t;
+    for (int T=1; T&lt;=t; T++)
+    {
+        int n;
+        cin&gt;&gt;n;
+        char s[30],w[30];
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;s[i];
+        }
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;w[i];
+        }
+        sort (s+1,s+n+1);
+        sort (w+1,w+n+1);
+        int b=1;
+        for (int i=1; i&lt;=n; i++)
+        {
+            if (s[i]!=w[i])
+            {
+                cout &lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+                b=0;
+                break;
+            }
+        }
+        if (b==1)
+        {
+            cout &lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre><hr><h3 id="c-isamatdin-and-his-magic-wand">C. Isamatdin and His Magic Wand!</h3><p><strong>给定一串数，可以选定一个奇数一个偶数对数字进行交换，求若干次操作后数组能达到的最小字典序的状态。</strong></p><p>注意到如果这个数组含奇数和偶数，那么其实每两个数都是可以通过一个奇偶性不同的“媒介”来实现位置交换的。所以这道题其实就变成了判断数组，如果全奇或全偶则原样输出；否则直接排序后输出。因为这样的操作一定可以达到理论最小字典序。</p><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    int t,a[200010];
+    cin&gt;&gt;t;
+    for (int T=1; T&lt;=t; T++)
+    {
+        int n,b1=0,b2=0;
+        cin&gt;&gt;n;
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;a[i];
+            if (a[i]%2==0)
+            {
+                b2=1;
+            }
+            else
+            {
+                b1=1;
+            }
+        }
+        if (b2==1 &amp;&amp; b1==1)
+        {
+            sort(a+1,a+n+1);
+        }
+        for (int i=1; i&lt;=n; i++)
+            {
+                cout &lt;&lt;a[i]&lt;&lt;&#39; &#39;;
+            }
+        cout &lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre><hr><h3 id="d-yet-another-array-problem">D. Yet Another Array Problem</h3><p><strong>给定一个数组，要求找出和其中至少一个数互质的数，输出符合条件的最小数。没有则输出-1</strong></p><p>虽然题目的范围给的很大 $( 2 \leq x,a_i \leq 10^{18} )$ ，但是再想一下不难发现前几十个质数相乘就已经远远超过这个大小了。（好像乘到57左右）那么，理论上这个题的答案也不会超过这个数。我是只处理了小于100的质数，后面就偏暴力枚举了，事实证明100以内就够了。 所以应该就不存在不存在这样的数，最终输出-1的情况。~~~~想搓组数据去hack的时候才察觉到这一点~~~~</p><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    unsigned long long t,a[100010];
+    int b[110]={0};
+    cin&gt;&gt;t;
+    for (int i=3; i&lt;=100; i++)
+    {
+        for (int j=i-1; j&lt;=2; j++)
+        {
+            if (i%j==0)
+            {
+                b[i]=1;
+                break;
+            }
+        }
+    }
+    for (int T=1; T&lt;=t; T++)
+    {
+        int n,b1=0,b2=0;
+        cin&gt;&gt;n;
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;a[i];
+        }
+        int bb=0;
+        for (int i=2; i&lt;=100; i++)
+        {
+            if (b[i]==0)
+            {
+                for (int j=1; j&lt;=n; j++)
+              {
+                    if (gcd(i,a[j])==1)
+                    {
+                        cout &lt;&lt;i&lt;&lt;endl;
+                        bb=1;
+                        break;
+                    }
+                }
+            }
+            if (bb==1)
+            {
+                break;
+            }
+        }
+        if (bb==0)
+        {
+            cout &lt;&lt;-1&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre><hr><h3 id="e-khba-loves-to-sleep">E. khba Loves to Sleep!</h3><p><strong>在$[0,x]$范围里，$n$个朋友分别位于位置$a_i$，要求选定$k$个位置，使这些朋友到达其中任何一个位置的最小距离最大。</strong></p><p>题目范围$1 \leq n,k \leq 2 \cdot 10^5,k-1 \leq x \leq 10^9$，遍历一边整个范围的位置代价过于大了，$k$的不定导致没法从相邻朋友的距离这个方面入手。 考虑二分答案（这里的“答案”即最大的最小距离），对于每个答案遍历一遍满足这个距离的时候，所有的可行位置$sum$，之后将其与$k$进行比较。$sum &lt; k$时说明目前答案已经不可行了，继续二分前半段更小的最小距离；$sum \geq k$则说明当前答案可以，继续二分更大的答案。 比赛的时候猪脑过载写了一堆好像也不用特判的判断。出D题才0:22，出这道题就1:24了。仅供参考，看前面的二分代码就行</p><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    int t,a[200010];
+    cin&gt;&gt;t;
+    for (int T=1; T&lt;=t; T++)
+    {
+        int n,k,x;
+        cin&gt;&gt;n&gt;&gt;k&gt;&gt;x;
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;a[i];
+        }
+        // if (n==1)//这是笨比特判，后来发现没用，别看
+        // {
+        //     int as;
+        //     if (abs(x-a[1]-a[1])&gt;=k)
+        //     {
+        //         as=min(x-a[1],a[1]);
+        //     }
+        //     else
+        //     as=min(x-a[1],a[1])-(k-abs(x-a[1]-a[1]))/2;
+        //     int aaa=0;
+        //     cout&lt;&lt;&quot;S&quot;&lt;&lt;as&lt;&lt;endl;
+        //     for (int i=0; i&lt;=x; i++)
+        //     {
+        //         if (i&lt;=a[1]-as+1  || i&gt;=a[1]+as-1)
+        //         {
+        //             if (aaa==k)
+        //             {
+        //                 break;
+        //             }
+        //             cout &lt;&lt;i&lt;&lt;&quot; &quot;;
+        //             aaa++;
+        //         }
+        //     }
+        //     cout &lt;&lt;endl;
+        //     break;
+        // }
+        sort (a+1,a+n+1);
+        int l=0,r=x+2;
+        int rr,br=0;
+        while (l&lt;=r)
+        {
+            int mid=(l+r)/2,ans=0;
+            if (a[1]-mid+1&gt;0)
+            {
+                ans+=a[1]-mid+1;
+            }
+            // cout &lt;&lt;l&lt;&lt;&#39;,&#39;&lt;&lt;r&lt;&lt;endl;
+            for (int i=2; i&lt;=n; i++)
+            {
+                // cout &lt;&lt;a[i]&lt;&lt;&quot;__&quot;&lt;&lt;a[i-1]&lt;&lt;&quot;:&quot;&lt;&lt;a[i]-mid+1-a[i-1]-mid&lt;&lt;endl;
+                if (a[i]-mid+1-a[i-1]-mid&gt;0)
+                {
+                    ans+=a[i]-mid+1-a[i-1]-mid;
+                }
+            }
+            if (x-a[n]-mid+1&gt;0)
+            {
+                ans+=x-a[n]-mid+1;
+            }
+            // cout &lt;&lt;&quot;**&quot;&lt;&lt;ans&lt;&lt;endl;
+            if (ans&gt;=k)
+            {
+                rr=mid;
+                if (l==r)
+            {
+                break;
+            }
+                if (r-l==1)
+                {
+                    br=1;
+                    l=r;
+                    continue;
+                }
+                l=mid;
+                continue;
+            }
+            if (l==r)
+            {
+                break;
+            }
+            r=mid;
+        }
+        // cout&lt;&lt;&quot;ANS=&quot;&lt;&lt;rr&lt;&lt;endl&lt;&lt;endl;
+        if (rr==0)
+        {
+            for (int i=0; i&lt;=k-1; i++)
+            {
+                cout &lt;&lt;i&lt;&lt;&#39; &#39;;
+            }
+            cout &lt;&lt;endl;
+            continue;
+        }
+            int aa=0;
+            if (a[1]-rr&gt;=0)
+            {
+                for (int j=0; j&lt;=a[1]-rr; j++)
+                {
+                    if (aa==k)
+                    {
+                        break;
+                    }
+                    cout &lt;&lt;j&lt;&lt;&#39; &#39;;
+                    aa++;
+                }
+            }
+            if (aa&lt;k)
+            {
+                for (int i=2; i&lt;=n; i++)
+            {
+                if (a[i]-rr+1-a[i-1]-rr&gt;0)
+                {
+                    for (int j=a[i-1]+rr; j&lt;=a[i]-rr; j++)
+                    {
+                        if (aa==k)
+                        {
+                            break;
+                        }
+                        cout &lt;&lt;j&lt;&lt;&#39; &#39;;
+                        aa++;
+                    }
+                }
+                if (aa==k)
+                        {
+                            break;
+                        }
+            }
+                if (aa&lt;k)
+                {
+                    if (x-a[n]-rr+1&gt;0)
+            {
+                for (int j=a[n]+rr; j&lt;=x; j++)
+                {
+                    if (aa==k)
+                    {
+                        break;
+                    }
+                    cout &lt;&lt;j&lt;&lt;&#39; &#39;;
+                    aa++;
+                }
+            }
+                }
+            }
+
+            cout &lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre><hr><h3 id="f-tree-tree">F. Tree, TREE!!!</h3><p>等我钻研一下之后可能补上。枚举每个根节点的lca显然会超时，应该是树状dp之类的东西，但是我忘了咋写了</p><hr><h3 id="g-mukhammadali-and-the-smooth-array">G. Mukhammadali and the Smooth Array</h3><p><strong>给定一个数组$a_n$，可以进行操作：消耗代价$c_i$，将$a_i$更改为任意数。求最小的代价，将整个数组变为不严格递增数列（即可以存在相等的数）。</strong></p><p>dp。定义dp数组$dp_i$为到如使$a_i$不变，到第$i$个位置为止，保证前面是不严格递增所<strong>节省的</strong>代价的<strong>最大值</strong>。 实现：</p><ul><li>先初始化$dp_i=c_i$，即初始不变$a_i$时节省的代价是$c_i$本身；</li><li>枚举$i$。对于每个$i$，枚举所有$j&lt;i$，若有$a_j \leq a_i$，则执行状态转移方程 $$ dp_i=max(dp_i,dp_j+c_i) $$ 意思大概就是$a_j \leq a_i$时，$a_j$与$a_i$已经满足不严格递增，可以在到第$j$个位置为止节省的代价的基础上（即$dp_j$）再节省一个$c_i$，$dp_i$取从$j$转移过来的和它当时本身的最大值即可。</li><li>取所有$dp_i$中的最大值$dp_{max}$。因为代价最小和节省的代价最大等价，输出$\sum_{i=1}^{n} c_i-dp_{max}$即为最终答案。</li></ul><pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    int t;
+    cin&gt;&gt;t;
+    for (int T=1; T&lt;=t; T++)
+    {
+        long long sum=0;
+        long long n,a[10000],c[10000],dp[10000];
+        cin&gt;&gt;n;
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;a[i];
+        }
+        for (int i=1; i&lt;=n; i++)
+        {
+            cin&gt;&gt;c[i];
+            sum+=c[i];
+            dp[i]=c[i];
+        }
+        for (int i=1; i&lt;=n; i++)
+        {
+            for (int j=1; j&lt;i; j++)
+            {
+                if (a[j]&lt;=a[i])
+                {
+                    dp[i]=max(dp[i],dp[j]+c[i]);
+                }
+            }
+        }
+        long long mx=-1;
+        for (int i=1; i&lt;=n; i++)
+        {
+            mx=max(mx,dp[i]);
+        }
+        // cout &lt;&lt;&quot;++&quot;;
+        cout &lt;&lt;sum-mx&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre></div><footer class="content__footer"><div class="entry-wrapper"><p class="content__updated">This article was updated on November 2, 2025</p><div class="content__actions"><div class="content__share"><button class="btn--icon content__share-button js-content__share-button"><svg width="20" height="20" aria-hidden="true"><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#share"></use></svg> <span>Share It</span></button><div class="content__share-popup js-content__share-popup"></div></div></div><div class="content__bio bio"><div><h3 class="h4 bio__name"><a href="https://crazyyx.github.io/authors/syna/" rel="author">Syna</a></h3></div></div></div></footer></article></main><footer class="footer footer--glued"><div class="wrapper"><div class="footer__copyright"><p>Powered by Publii</p></div><div class="footer__social"><a href="https://x.com/SynaLunrium" aria-label="X"><svg><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#twitter"/></svg></a></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://crazyyx.github.io/assets/js/scripts.min.js?v=700105c316933a8202041b6415abb233"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script></body></html>
