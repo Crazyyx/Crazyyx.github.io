@@ -20,7 +20,7 @@
         <updated>2025-11-02T18:37:42+08:00</updated>
             <summary>
                 <![CDATA[
-                    比赛题目网址 https://codeforces.com/contest/2167 判断四个木棒是否能够组成正方形。 写的时候第一眼看成长方形了 附赛时代码 #include &lt;bits/stdc++.h&gt; using namespace std; int main() { ios::sync_with_stdio(false); int t; cin&gt;&gt;t; for (int T=1; T&lt;=t; T++) { int a[10]; cin&gt;&gt;a[1]&gt;&gt;a[2]&gt;&gt;a[3]&gt;&gt;a[4]; sort (a+1,a+5); if (a[1]==a[2] &amp;&amp; a[3]==a[4] &amp;&amp; a[2]==a[3]) { cout &lt;&lt;&quot;YES&quot;&lt;&lt;endl; } else { cout &lt;&lt;&quot;NO&quot;&lt;&lt;endl; } } return&hellip;
+                    比赛题目网址 https://codeforces.com/contest/2167 判断四个木棒是否能够组成正方形。 写的时候第一眼看成长方形了&hellip;
                 ]]>
             </summary>
         <content type="html">
