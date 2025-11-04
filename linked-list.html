@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>链表 | Syna&#x27;s blog</title><meta name="description" content="一种通过指针连接多个结构体的动态数据结构，兼具灵活性与效率：支持动态扩展与快速的插入删除，但随机访问性能较差。
+"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism-violet.css"><link rel="stylesheet" href="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism-inline-color.css"><meta name="theme-color" content="#180B90" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#7BB1F3" media="(prefers-color-scheme: light)"><meta name="msapplication-navbutton-color" content="#7BB1F3"><meta name="apple-mobile-web-app-status-bar-style" content="#7BB1F3"><link rel="canonical" href="https://crazyyx.github.io/linked-list.html"><link rel="alternate" type="application/atom+xml" href="https://crazyyx.github.io/feed.xml" title="Syna&#x27;s blog - RSS"><link rel="alternate" type="application/json" href="https://crazyyx.github.io/feed.json" title="Syna&#x27;s blog - JSON"><meta property="og:title" content="简单链表和双向链表"><meta property="og:site_name" content="Syna's blog"><meta property="og:description" content="一种通过指针连接多个结构体的动态数据结构，兼具灵活性与效率：支持动态扩展与快速的插入删除，但随机访问性能较差。
+"><meta property="og:url" content="https://crazyyx.github.io/linked-list.html"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://crazyyx.github.io/media/website/Snipaste_2023-08-16_21-17-55-3.jpg" type="image/x-icon"><link rel="preload" href="https://crazyyx.github.io/assets/dynamic/fonts/montserrat/montserrat.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://crazyyx.github.io/assets/dynamic/fonts/montserrat/montserrat-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="https://crazyyx.github.io/assets/css/style.css?v=ba354d0c943c17a4ea9d6909de7a4806"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://crazyyx.github.io/linked-list.html"},"headline":"简单链表和双向链表","datePublished":"2025-11-04T18:07+08:00","dateModified":"2025-11-04T18:31+08:00","description":"一种通过指针连接多个结构体的动态数据结构，兼具灵活性与效率：支持动态扩展与快速的插入删除，但随机访问性能较差。\n","author":{"@type":"Person","name":"Syna","url":"https://crazyyx.github.io/authors/syna/"},"publisher":{"@type":"Organization","name":"Syna"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script>window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};</script><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script><script>// 等待页面完全加载
+window.addEventListener('load', function() {
+    // 初始化Mermaid
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        securityLevel: 'loose',
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    });
+    
+    // 尝试渲染所有mermaid图表
+    try {
+        mermaid.init();
+    } catch(e) {
+        console.log('Mermaid init error:', e);
+    }
+});</script></head><body class="post-template"><script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script><script>// 等待页面完全加载
+window.addEventListener('load', function() {
+    // 初始化Mermaid
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        securityLevel: 'loose',
+        flowchart: {
+            useMaxWidth: false,
+            htmlLabels: true
+        }
+    });
+    
+    // 尝试渲染所有mermaid图表
+    try {
+        mermaid.init();
+    } catch(e) {
+        console.log('Mermaid init error:', e);
+    }
+});</script><header class="top js-header"><a class="logo" href="https://crazyyx.github.io/">Syna&#x27;s blog</a><div class="search"><div class="search__overlay js-search-overlay"><div class="wrapper search__overlay-inner"></div></div><button class="search__btn btn--icon js-search-btn" aria-label="Search"><svg height="18" width="18" role="presentation" focusable="false"><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#search"/></svg></button></div></header><main class="post"><article class="content"><div class="hero hero--noimage"><header class="hero__content"><div class="wrapper"><h1>简单链表和双向链表</h1><div class="feed__meta content__meta"><a href="https://crazyyx.github.io/authors/syna/" class="feed__author">Syna</a> <time datetime="2025-11-04T18:07" class="feed__date">十一月 4, 2025 </time><span class="reading-time" aria-label="4 min read">4 min read</span></div></div></header></div><div class="entry-wrapper content__entry"><h1 id="链表">链表</h1><p>一种通过指针连接多个结构体的动态数据结构，兼具灵活性与效率：支持动态扩展与快速的插入删除，但随机访问性能较差。</p><p>定义：</p><pre><code class="language-cpp">typedef struct L
+{
+ int num;
+ struct L* next;
+}Node;
+</code></pre><p><code>num</code>存储元素，指针变量<code>next</code>存储链表中下一个节点的地址，从而实现逐个遍历。</p><p>当然可以存其他或者多个变量，链表的重点在于那个<code>next</code></p><p>一些常用的函数：</p><ul><li><code>create()</code>：创建链表</li></ul><pre><code class="language-cpp">//创建长度为n的链表
+Node* create()
+{
+    Node *head=NULL,*tail=NULL,*newNode;
+    for (int i=1; i&lt;=n; i++)
+    {
+        int k;
+        cin&gt;&gt;k;
+        newNode=(Node*)malloc(sizeof(Node));//为新节点分配空间
+        newNode-&gt;num=k;
+        newNode-&gt;next=NULL;
+        if (head==NULL)//即判断当前节点是否为第一个
+        {
+            head=newNode;
+            tail=newNode;//将head和tail都先赋值为第一个节点的地址
+        }
+        else
+        {
+            tail-&gt;next=newNode;//tail存储连接新节点前，最后一个节点的地址，这里相当于连接操作
+            tail=newNode;//然后移动tail到最新的尾节点
+        }
+    }
+    return head;//一定要保存第一个节点的地址！！这个丢了整个链表就mygo了
+}
+</code></pre><ul><li><code>print(Node* head)</code>：顺序输出链表元素</li></ul><pre><code class="language-cpp">void print(Node* head)
+{
+    Node* p=head;
+    while (p!=NULL)
+    {
+        cout &lt;&lt;(p-&gt;num)&lt;&lt;‘ ‘;
+        p=p-&gt;next;
+    }
+    return;
+}
+</code></pre><ul><li><code>freelist(Node* head)</code>：释放整个链表。 <em>使用完不进行释放操作相当于这几块内存永远被占用，无法被再次使用，也无法被回收。</em> 虽然现在的编译器一般都会在运行后自动释放占用的内存，但以防万一，代码最后写上也没啥。美名曰好习惯</li></ul><pre><code class="language-cpp">void freelist(Node* head)
+{
+    Node* p=head;
+    while (p!=NULL)
+    {
+        Node* tmp=p;
+        p=p-&gt;next;
+        free(tmp);//自带函数，可释放通过malloc()代码分配的内存
+    }
+    return;
+}
+</code></pre><ul><li><code>find（Node* head,int n)</code>：寻找链表中值为<code>n</code>的节点，并返回其地址</li></ul><pre><code class="language-cpp">//这里以返回第一个值为n的节点地址为例
+Node* find(Node* head,int N)
+{
+    Node* p=head;
+    while (p!=NULL)
+    {
+        if (p-&gt;num==N)
+        {
+            return p;
+        }
+        p=p-&gt;next;//继续遍历下一个节点，链表里最常用的一行代码
+    }
+    return NULL;//若遍历完未找到n，则返回空地址
+}
+</code></pre><ul><li><code>add(Node* head,int n,int m)</code>：插入函数，以将新元素<code>n</code>插入第<code>m</code>个位置<strong>后</strong>为例</li></ul><pre><code class="language-cpp">void add(Node* head,int N,int m)
+{
+    Node* p=head;
+    for (int i=1; i&lt;=m-1; i++)
+    {
+        p=p-&gt;next;
+    }//从head开始，移动m个节点，出循环后p存储第m个节点的地址
+    Node* newNode;
+    newNode=(Node*)malloc(sizeof(Node));//为新节点分配空间
+    newNode-&gt;num=n;
+    newNode-&gt;next=p-&gt;next;//将新节点的next赋值为第m+1个节点的地址
+    p-&gt;next=newNode;//将第m个节点的next赋值为新节点地址
+    //也就是前后各进行一次连接操作，即可实现将新节点插入链表
+    return;
+}
+</code></pre><ul><li><code>delete(Node* head,int cnt)</code>：删除列表中第<code>cnt</code>个节点</li></ul><pre><code class="language-cpp">Node* delete(Node* head,int cnt)
+{
+    Node* HEAD=head;//先存下head，因为删除的节点是第一个时head会发生变化
+    Node* p=head;
+    for (int i=1; i&lt;=cnt; i++)
+    {
+        p=p-&gt;next;
+    }//将p向后移动cnt位，找到要删除的节点
+    if (p==head)//判断要移动的是否是第一个节点
+    {
+        HEAD=head-&gt;next;//更新HEAD为下一个节点的地址
+    }
+    pre-&gt;next=target-&gt;next;//核心代码。将目标节点的上一个节点与下一个节点连接,就是把中间那个断开了
+    return HEAD;//返回可能发生变动的head
+}
+</code></pre><ul><li><code>move(Node* head,int x,int cnt)</code>：移动链表中的节点，以将<strong>存储</strong>元素<code>x</code>的节点向后移动<code>cnt</code>位为例</li></ul><p>其实几乎就是<code>add</code>加<code>delete</code></p><pre><code class="language-cpp">//这里默认移动cnt位后不会超过链表末尾，不进行防御性编程和特判
+Node* move(Node* head,int x,int cnt)
+{
+    Node* HEAD=head;//先存下head，因为移动操作后可能发生变化
+    Node* target=find(head,x);//参考上文的find函数，返回值为x的节点的地址
+    Node* pre=pre;//注意为了之后断开的操作，这里还需要记录目标节点前一个节点的地址。可以通过在find函数中加上记录上一个节点地址来实现，也可以更简单的实现：双向链表，下面会介绍。这里不详写实现代码，暂以pre代表target上一个节点的地址
+    if (target==head)//判断要移动的是否是第一个节点
+    {
+        HEAD=head-&gt;next;//更新HEAD为下一个节点的地址
+    }//其他情况head都不会发生变化。
+    Node* p=target;
+    for (int i=1; i&lt;=cnt; i++)
+    {
+        p=p-&gt;next;
+    }//将p向后移动cnt位，循环结束后p存储要移动的节点后cnt个节点的地址
+    //移动分为两个操作：将原节点从链表断开，插入一个新节点到链表中。
+    pre-&gt;next=target-&gt;next;//断开操作，将目标节点的上一个节点与下一个节点连接就行
+    //插入新节点与前文add()函数几乎相同
+    target-&gt;next=p-&gt;next;
+    p-&gt;next=target;
+    return HEAD;//依旧返回新head。要注意在每一个可能造成head变动的函数都进行新head的记录与返回
+}
+</code></pre><p>到这里大家大概也发现了不管什么操作，只要是需访问链表的操作，都要从<code>head</code>开始遍历，导致查找效率低。这就是链表的缺点之一，也是为什么时刻更新、存储<code>head</code>地址如此重要的原因。</p><p>回到上文提到的<code>move</code>操作。向后移动节点固然简单，可是如果要<em>向前</em>移动节点，实现就较为困难了。我们当前的链表，顺序遍历好实现，倒序遍历又该如何实现？针对这个，我们有一个较为便利的解决方法：</p><h2 id="双向链表">双向链表</h2><p>如果单向链表可以这么表示的话，</p><pre><code class="language-mermaid">flowchart LR
+    classDef default fill:#263238,stroke:#00bcd4,stroke-width:2px,color:#fff
+    classDef pointer fill:#37474f,stroke:#ff9800,stroke-width:2px,color:#fff
+    
+    direction LR
+    
+    Head[头指针 Head]
+    Null[NULL]
+    
+    N1[数据: 10]
+    N2[数据: 20]
+    N3[数据: 30]
+    
+    Head -.-&gt;|指向| N1
+    N1 --&gt;|next| N2
+    N2 --&gt;|next| N3
+    N3 --&gt;|next| Null
+    
+    class Head,Null pointer
+</code></pre><p>那么双向链表便是这样子的。</p><pre><code class="language-mermaid">flowchart LR
+    classDef default fill:#263238,stroke:#00bcd4,stroke-width:2px,color:#fff
+    classDef pointer fill:#37474f,stroke:#ff9800,stroke-width:2px,color:#fff
+    classDef null fill:#d32f2f,stroke:#ff5252,stroke-width:2px,color:#fff
+    
+    direction LR
+    
+    Head[头指针 Head]
+    Tail[尾指针 Tail]
+    
+    N1[数据: 10]
+    N2[数据: 20]
+    N3[数据: 30]
+    
+    Head -.-&gt;|指向| N1
+    Tail -.-&gt;|指向| N3
+    
+    N1 &lt;---&gt;|next/prev| N2
+    N2 &lt;---&gt;|next/prev| N3
+    
+    class Head,Tail pointer
+    class Null1,Null2 null
+</code></pre><p>通过和用<code>next</code>标记下一个节点地址相同的方式，添加一个标记<em>上一个</em>节点地址的变量<code>prev</code>，以实现链表的双向遍历。</p><p>定义：</p><pre><code class="language-cpp">typedef struct L
+{
+ int num;
+ struct L* next;
+ struct L* prev;
+}Node;
+</code></pre><p>为了维护新的<code>prev</code>指针，我们需要进行对<code>create()</code>函数的一些小修改。</p><pre><code class="language-cpp">Node* create()
+{
+    Node *head=NULL,*tail=NULL,*newNode;
+    for (int i=1; i&lt;=n; i++)
+    {
+        int k;
+        cin&gt;&gt;k;
+        newNode=(Node*)malloc(sizeof(Node));
+        newNode-&gt;num=k;
+        newNode-&gt;next=NULL;
+        newNode-&gt;prev=tail;//记录上一个节点的地址
+        if (head==NULL)
+        {
+            head=newNode;
+            tail=newNode;
+        }
+        else
+        {
+            tail-&gt;next=newNode;
+            tail=newNode;
+        }
+    }
+    return head;
+}
+</code></pre><p>上面的代码没有记录最后的<code>tail</code>，但是双向遍历，此时的<code>tail</code>地位与<code>head</code>一样重要。记录很简单，可以通过指针或者其他方法记录，<del>主要是我懒得改了</del></p><p>应用不需要再说什么了。除了名字不一样，<code>tail</code>和<code>*prev</code>本质上是等效于<code>head</code>和<code>*next</code>的。一些原来反向难以实现的操作可以通过这组反向的指针实现，唯一需要注意的是每一次维护<code>next</code>的操作基本都需要多维护一个<code>prev</code></p><p>-——</p><h2 id="例题">例题</h2><ol><li>输入一个链表，<strong>以输入<code>-1</code>为结束标志</strong>，逆序输出该链表。</li></ol><pre><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+int n,m;
+typedef struct LinkNode
+{
+    int num;
+    struct LinkNode* pre;
+    struct LinkNode* next;
+}Node;
+Node *create()
+{
+    Node *head=NULL,*tail=NULL,*newNode;
+    while (1)
+    {
+        int i;
+        scanf(&quot;%d&quot;,&amp;i);
+        if (i==-1)
+        {
+            break;
+        }
+        newNode=(Node*)malloc(sizeof(Node));
+        newNode-&gt;num=i;
+        newNode-&gt;next=NULL;
+        newNode-&gt;pre=tail;
+        if (head==NULL)
+        {
+            head=newNode;
+            tail=newNode;
+        }
+        else
+        {
+            tail-&gt;next=newNode;
+            tail=newNode;
+        }
+    }
+    return tail;//因为只需要倒序输出，所以只记录tail也没关系
+}
+void print(Node *head)
+{
+    Node *p=head;
+    while (p!=NULL)
+    {
+        printf(&quot;%d &quot;,p-&gt;num);
+        p=p-&gt;pre;
+    }
+    return;
+}
+void freeL(Node *head)
+{
+    Node *p=head;
+    while (p!=NULL)
+    {
+        Node *temp=p;
+        p=p-&gt;next;
+        free(temp);
+    }
+}
+int main()
+{
+    Node* tail=create();
+    print(tail);
+    return 0;
+}
+</code></pre><ol start="2"><li>查找链表中的特定元素并移动位置。</li></ol><p>第一行输入一个正整数 $n(n &gt; 0)$ ，表示链表的长度。</p><p>第二行输入一个正整数$m(m &gt; 0)$，表示移动链表中节点的次数。</p><p>接下来$m$行，每行输入两个整数 $p$ 和 $q$（$q$可为任意负数，$0$，正数 ），分别表示$num$为 $p$ 的节点在链表中移动 $q$ 步。$q$ 为负数表示向前移动。</p><p><strong>注意：移动的距离如果超出链表长度，则放在两端即成为头节点或者成为尾结点。</strong></p><pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+int n,m;
+typedef struct LinkNode
+{
+    int num;
+    struct LinkNode* pre;
+    struct LinkNode* next;
+}Node;
+Node *create()
+{
+    Node *head=NULL,*tail=NULL,*newNode;
+    for (int i=1; i&lt;=n; i++)
+    {
+        newNode=(Node*)malloc(sizeof(Node));
+        newNode-&gt;num=i;
+        newNode-&gt;next=NULL;
+        newNode-&gt;pre=tail;
+        if (head==NULL)
+        {
+            head=newNode;
+            tail=newNode;
+        }
+        else
+        {
+            tail-&gt;next=newNode;
+            tail=newNode;
+        }
+    }
+    return head;
+}
+void print(Node *head)
+{
+    Node *p=head;
+    while (p!=NULL)
+    {
+        printf(&quot;%d &quot;,p-&gt;num);
+        p=p-&gt;next;
+    }
+    return;
+}
+void freeL(Node *head)
+{
+    Node *p=head;
+    while (p!=NULL)
+    {
+        Node *temp=p;
+        p=p-&gt;next;
+        free(temp);
+    }
+}
+int getlen(Node *head)
+{
+    int CNT=0;
+    Node *p=head;
+    while(p!=NULL)
+    {
+        CNT++;
+        p=p-&gt;next;
+    }
+    return CNT;
+}
+Node *find(Node *head,int x)
+{
+    Node *p=head;
+    while (p!=NULL)
+    {
+        if (p-&gt;num==x)
+        {
+            return p;
+        }
+        // *He=p;
+        p=p-&gt;next;
+    }
+    return NULL;
+}
+Node *move(Node *head,int x,int cnt)
+{
+    //tarH:目标节点上一个节点的地址//换双向链表了。不用这个记了
+    //tarT:目标节点地址
+    // Node *tarH=NULL;
+    Node *tarT=find(head,x);
+    int Len=getlen(tarT);
+    if (tarT-&gt;pre==NULL)//目标节点是第一个
+    {
+        head=tarT-&gt;next;
+    }
+    // tarH-&gt;next=tarT-&gt;next;
+    else
+    {
+        tarT-&gt;pre-&gt;next=tarT-&gt;next;
+    }
+    if (tarT-&gt;next!=NULL)
+    {
+        tarT-&gt;next-&gt;pre=tarT-&gt;pre;
+    }
+    // tarT-&gt;pre=NULL;
+    // tarT-&gt;next=NULL;
+   //已经独立出来要移动的节点（将上一个的next连接到下一个，将本节点的next清空）
+    if (cnt&gt;0)
+    {
+        if (cnt&gt;=Len)
+        {
+            Node *end=head;
+            while(end-&gt;next!=NULL)
+            {
+                end=end-&gt;next;
+            }//出来后end就是结尾节点地址了
+            end-&gt;next=tarT;//相当于在最后连上目标节点
+            tarT-&gt;pre=end;
+            tarT-&gt;next=NULL;
+        }
+        else
+        {
+            Node *end=tarT;
+            for (int i=1; i&lt;=cnt; i++)
+            {
+                end=end-&gt;next;
+            }//end是移动了n步后目标节点前面的那个节点地址
+            tarT-&gt;next=end-&gt;next;//end的下一个给目标节点的下一个
+            end-&gt;next=tarT;//end下一个给目标节点
+            tarT-&gt;pre=end;
+        }
+    }
+    if (cnt&lt;0)
+    {
+        cnt=-cnt;
+        if (cnt&gt;=n-Len-1)
+        {
+            head-&gt;pre=tarT;
+            tarT-&gt;next=head;
+            head=tarT;
+            tarT-&gt;pre=NULL;
+        }
+        else
+        {
+            Node *end=tarT;
+            for (int i=1; i&lt;=cnt; i++)
+            {
+                end=end-&gt;pre;
+            }
+            end-&gt;pre-&gt;next=tarT;
+            tarT-&gt;pre=end-&gt;pre;
+            end-&gt;pre=tarT;
+            tarT-&gt;next=end;
+        }
+    }
+    return head;
+}
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    Node* head=create();
+    for (int i=1; i&lt;=m; i++)
+    {
+        int t1,t2;
+        scanf(&quot;%d%d&quot;,&amp;t1,&amp;t2);
+        head=move(head,t1,t2);
+        // print(head);
+    }
+    print(head);
+    return 0;
+}
+</code></pre></div><footer class="content__footer"><div class="entry-wrapper"><p class="content__updated">This article was updated on 十一月 4, 2025</p><div class="content__actions"><div class="content__share"><button class="btn--icon content__share-button js-content__share-button"><svg width="20" height="20" aria-hidden="true"><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#share"></use></svg> <span>Share It</span></button><div class="content__share-popup js-content__share-popup"></div></div></div><div class="content__bio bio"><div><h3 class="h4 bio__name"><a href="https://crazyyx.github.io/authors/syna/" rel="author">Syna</a></h3></div></div></div><nav class="content__nav"><div class="wrapper"><div class="content__nav-inner"><div class="content__nav-prev"><a href="https://crazyyx.github.io/codeforces-round-1062-div-4.html" class="content__nav-link" rel="prev"><div><span>Previous</span> Codeforces Round 1062 (Div. 4)</div></a></div></div></div></nav></footer></article><div class="content__comments"><div class="entry-wrapper"></div></div></main><footer class="footer footer--glued"><div class="wrapper"><div class="footer__copyright"><p>Powered by Publii</p></div><div class="footer__social"><a href="https://x.com/SynaLunrium" aria-label="X"><svg><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#twitter"/></svg></a></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://crazyyx.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://crazyyx.github.io/assets/js/scripts.min.js?v=700105c316933a8202041b6415abb233"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script defer="defer" src="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism.js"></script><script defer="defer" src="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism-line-numbers.min.js"></script><script defer="defer" src="https://crazyyx.github.io/media/plugins/syntaxHighlighter/clipboard.min.js"></script><script defer="defer" src="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism-copy-to-clipboard.min.js"></script><script defer="defer" src="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism-inline-color.min.js"></script><script defer="defer" src="https://crazyyx.github.io/media/plugins/syntaxHighlighter/prism-autolinker.min.js"></script></body></html>
